@@ -23,7 +23,7 @@ jobs:
                   echo "La valeur de la variable est ${{ vars.VAR1 }}"
   job2:
           needs: job1
-          if : failure()
+          if : always ()
           runs-on : ubuntu-latest
           steps:
             - name: Affiche que le Job1 a echoue
