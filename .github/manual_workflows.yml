@@ -1,0 +1,55 @@
+name: Manual Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy'
+        required: true
+        default: 'production'
+
+
+jobs:
+
+      env: 
+            a : 1
+            b : 2
+
+  job1: 
+     runs-on: ubuntu-latest
+     if: (vars.a >= 0) && (vars.b >= 0)
+      steps:
+    - uses: actions/checkout@v2
+    - name: Exécuter un script si la condition est remplie
+      run: echo "A est strictement positif et sa valeur est :" ${{vars.A}}
+           echo "B est strictement positif et sa valeur est :" ${{vars.B}}
+  
+  
+  job2:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Instalation des dependences
+      run: 
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt  
+
+   - name: Run Python Script
+      run: python script.py |
+
+   -   name: Multiplication
+            env:
+                A1: ${{vars.A}}
+                B1: ${{vars.B}}
+            run: python script.py $A1 $B1
+
+
+
