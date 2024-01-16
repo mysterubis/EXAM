@@ -21,8 +21,8 @@ jobs:
       steps:
     - uses: actions/checkout@v2
     - name: Exécuter un script si la condition est remplie
-      run: echo "A est strictement positif et sa valeur est :" ${{vars.A}}
-           echo "B est strictement positif et sa valeur est :" ${{vars.B}}
+      run: echo "A est strictement positif et sa valeur est :" ${{vars.a}}
+           echo "B est strictement positif et sa valeur est :" ${{vars.b}}
   
   
   job2:
